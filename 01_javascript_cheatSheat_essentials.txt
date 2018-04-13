@@ -1,0 +1,207 @@
+Variables And Data Types
+--------------------------------------------------------
+//Variables
+var person = 'instructor';
+console.log(person);
+
+person = 'teacher';
+console.log(person);
+
+var firstName = 'John', 
+    lastName = 'Doe', 
+    age = 27;
+
+//Strings
+var str = "John is an 'Instructor'";
+console.log(str);
+
+// Numbers
+var num = 27.23;
+console.log(num);
+
+// Booleans
+var num1 = 5;
+var num2 = 10;
+console.log(num1 < num2);
+console.log(num1 > num2);
+
+// Undefined
+var a;
+console.log(a);
+
+// Null
+var a = null;
+console.log(a);
+
+JavaScript Operators
+--------------------------------------------------------
+// Addition
+var a = 5 + 5;
+console.log(a);
+
+// Subtraction
+var a = 5 - 5;
+console.log(a);
+
+// Multiplication
+var a = 5 * 5;
+console.log(a);
+
+// Division
+var a = 5 / 5;
+console.log(a);
+
+var a = (5 + 5) * 5;
+console.log(a);
+
+Comparison Operators
+--------------------------------------------------------
+var a = 5;
+var b = 5;
+console.log(a == b);
+
+var a = 5;
+var b = '5';
+console.log(a == b);
+console.log(a === b);
+
+var a = 5;
+var b = 5;
+console.log(a != b);
+
+var a = 5;
+var b = '5';
+console.log(a != b);
+console.log(a !== b);
+
+Type Coercion
+--------------------------------------------------------
+var a = 10 + 5;
+console.log(a);
+
+var a = 10 + '5';
+console.log(a);
+
+var b = 'Hello ' + ' dear ' + 'student';
+console.log(b);
+
+var a = 10 * '5';
+console.log(a);
+
+var a = 5 + 10 + 'b';
+console.log(a);
+
+var c = 'b' + 5 + 10;
+console.log(c);
+
+console.log(5 === 5);
+console.log(5 === 5 === 5);
+console.log(true === 5);
+console.log(true == 1);
+console.log(false == 0);
+
+Conditional Statements
+--------------------------------------------------------
+// if statement
+var myChild = 'Alexis';
+var gender = 'male';
+
+// var gender = 'female';
+
+if(gender === 'male') {
+  console.log(myChild + ' is my son ');
+} else {
+  console.log(myChild + ' is my daughter');
+}
+
+Else If Statement And Logical Operators
+--------------------------------------------------------
+var prof = 'instructor';
+// var prof = 'doctor';
+// var prof = 'engineer';
+
+if(prof === 'instructor') {
+  console.log(prof + ' teaches students');
+} else if(prof === 'doctor') {
+  console.log(prof + ' treates people');
+} else if(prof === 'composer') {
+  console.log(prof + ' creates the music');
+} 
+//   else if(prof === 'doctor') {
+//   console.log(prof + ' creates the music');
+// } 
+  else {
+  console.log('professions do not match');
+}
+
+// Logical AND
+if(5 === 5 && 4 === 4) {
+  console.log('condition is true');
+} else {
+  console.log('condition is false');
+}
+
+if(5 === 4 && 4 === 4) {
+  console.log('condition is true');
+} else {
+  console.log('condition is false');
+}
+
+// Logical OR
+if(5 === 4 || 4 === 4) {
+  console.log('condition is true');
+} else {
+  console.log('condition is false');
+}
+
+if(5 === 4 || 4 === 3) {
+  console.log('condition is true');
+} else {
+  console.log('condition is false');
+}
+
+// Logical NOT
+if(!true) {
+  console.log('condition is true');
+} else {
+  console.log('condition is false');
+}
+
+Coding Task 1 - Solution
+--------------------------------------------------------
+/*
+1. Create the variables to represent scores of exams for John and Nick and set the values 80 and 45;
+2. Create the variable to set the lower limit for passing the exam and assign the value 51;
+3. Write the condition in if statement which will check if both students have passed an exam and log 
+   the result in console;
+4. Use else if statement in order to check if one of the students has passed an exam and log the 
+   result in console;
+5. Use else statement in order to display in console that both students have failed;
+6. In case of passing the exam by one of the students, find out which one was that and display in 
+   console as an additiona; information about the student and his points
+7. Test ass the possible cases (both students passed, John passed and Nick failed, Nick passed and 
+   John failed, both students failed).
+*/
+
+// SOLUTION:
+
+/*
+var scoreOfJohn = 80;
+// var scoreOfJohn = 49;
+var scoreOfNick = 45;
+// var scoreOf Nick = 75;
+var pass = 51;
+
+if (scoreOfJohn >= pass && scoreOfNick >= pass) {
+  console.log('Both students passed');
+} else if(scoreOfJohn >= pass || scoreOfNick >= pass) {
+  console.log('One of the students passed:')
+
+   if (scoreOfJohn > scoreOfNick) {
+     console.log('and it is John with ' + scoreOfJohn + ' points');
+   } else {
+     console.log('and it is Nick with ' + scoreOfNick + ' points');
+   }
+} else {
+  console.log('Both of the students failed');
+}
