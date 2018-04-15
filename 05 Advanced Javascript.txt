@@ -1,0 +1,403 @@
+// Everything Is An Object
+-----------------------------------------------
+/*
+// var arr = [1, 2, 3];
+// arr[3] = 4;
+
+// arr.prop = 'Hello';
+
+// console.log(arr);
+// console.log(arr.prop);
+
+// function a() {
+//   console.log('Hello');
+// }
+
+// a['prop'] = 'Hi';
+
+// a.obj = {
+//   greet: 'Hey'
+// };
+
+// a.myFunc = function() {
+//   console.log('Hola');
+// }
+
+// console.log(window);
+*/
+
+
+Function Constructor
+-----------------------------------------------
+/*
+var person1 = {};
+person1.firstname = 'John';
+person1.lastname = 'Smith';
+
+var person2 = {};
+person2.firstname = 'Nick';
+person2.lastname = 'Doe';
+
+// function createPerson() {
+//   var newPerson = {};
+//   newPerson.firstname = 'Bob';
+//   newPerson.lastname = 'Brown';
+//   return newPerson;
+// }
+
+// function createPerson(firstname, lastname) {
+//   var newPerson = {};
+//   newPerson.firstname = firstname;
+//   newPerson.lastname = lastname;
+//   return newPerson;
+// }
+
+function Person(firstname, lastname) {
+  
+  this.firstname = firstname;
+  this.lastname = lastname;
+  
+}
+
+var person3 = new Person('Bob', 'Brown');
+var person4 = new Person('Mary', 'James');
+
+// console.log(this);
+console.log(person1);
+console.log(person2);
+console.log(person3);
+console.log(person4);
+
+var strObj = new String('Hello');
+console.log(strObj);
+console.log(typeof strObj);
+*/
+
+
+Prototype - Object Function
+-----------------------------------------------
+/*
+var a = {};
+var b = new Object();
+
+console.log(a);
+console.log(b);
+console.log(Object);
+console.log(Object.prototype);
+
+Object.prototype.greet = 'Hello';
+console.log(Object.prototype);
+*/
+
+Function Constructors And Prototypes
+-----------------------------------------------
+/*
+// function a() {}
+
+// console.log(a.prototype);
+// console.log(a.prototype.__proto__);
+
+// var b = {};
+
+function Person(firstname, lastname) {
+  this.firstname = firstname;
+  this.lastname = lastname;
+  // this.getFullName = function() {
+  //   return this.firstname + ' ' + this.lastname;
+  // }
+}
+
+Person.prototype.getFullName = function() {
+  return this.firstname + ' ' + this.lastname;
+}
+
+Person.prototype.greet = 'Hello from prototype object';
+
+var person1 = new Person('John', 'Smith');
+person1.greet = 'Hello from person1 object';
+console.log(person1.greet);
+var person2 = new Person('Nick', 'Doe');
+
+console.log(person1.getFullName());
+console.log(person2.getFullName());
+console.log(person1.greet);
+*/
+
+Object.create()
+-----------------------------------------------
+/*
+// console.dir(Object);
+
+// var obj1 = Object.create(Object.prototype, {
+//   name: {
+//     value: 'John'
+//   }
+// });
+// // obj1.name = 'John';
+
+
+
+// console.log(obj1);
+
+// var obj2 = {};
+// console.log(obj2);
+
+// function Person() {
+//   this.name = 'John';
+// }
+
+// Person.prototype.greet = 'Hello';
+
+// var person1 = new Person();
+// var person2 = Object.create(Person.prototype);
+
+// console.log(person1);
+// console.log(person2);
+
+var firstProto = {
+  sayHello: function() {
+    return 'Hello ' + this.name;
+  }
+};
+
+var john = Object.create(firstProto, {
+  name: {
+    value: 'John'
+  }
+});
+
+console.log(john);
+
+var secondProto = Object.create(firstProto, {
+  sayHi: {
+    value: function() {
+    return 'Hi ' + this.name;
+    }
+  }
+});
+
+console.log(secondProto);
+
+var bob = Object.create(secondProto, {
+  name: {
+    value: 'Bob'
+  }
+});
+
+console.log(bob);
+
+
+var obj = Object.create(null);
+console.log(obj);
+*/
+
+First-Class Functions
+-----------------------------------------------
+/*
+// a();
+// var a = function() {
+//   console.log('Hello');
+// }
+
+// a();
+
+// function sum(num1, num2, fn) {
+//   console.log(num1 + num2);
+//   console.log(fn());
+// }
+
+// function done() {
+//   return 'Function is executed'
+// }
+
+// sum(5, 10, done);
+// sum(5, 10, function() {
+//   return 'Function is executed'
+// });
+
+var scores = [55, 35, 87, 45];
+
+function checkResult(arr, fn) {
+  var newArr = [];
+  for(var i = 0; i < arr.length; i++) {
+    newArr.push(fn(arr[i]));
+  }
+  return newArr;
+}
+
+function passOrFail(score) {
+  return score >= 51;
+}
+
+function calcDifference(score) {
+  return score - 51;
+}
+
+console.log(checkResult(scores, passOrFail));
+console.log(checkResult(scores, calcDifference));
+*/
+
+
+ First-Class Functions - Part 2
+-----------------------------------------------
+/*
+function finalResult(score) {
+  if(score >= 81) {
+    return function(name) {
+      console.log(name + ', you passed an exam and you are student of State University')
+    } 
+  } else if(score >= 51) {
+    return function(name) {
+      console.log(name + ', you passed an exam and you are student of State College');
+    }
+  } else {
+    return function(name) {
+      console.log(name + ', you failed');
+    }
+  }
+}
+
+var result1 = finalResult(77);
+// console.log(result1);
+result1('John');
+
+var result2 = finalResult(44);
+result2('Jane');
+
+finalResult(96)('Mary');
+*/
+
+Immediately Invoked Function Expressions (IIFE)
+-----------------------------------------------
+/*
+// function a() {
+//   var c = 'From function a';
+//   return c;
+// }
+
+// var b = function() {
+//   var c = 'From function b';
+//   return c;
+// }
+
+// var c = 10;
+// var c = 20;
+
+// console.log(c);
+// console.log(a());
+// console.log(b());
+
+// 5 + 10;
+
+(function(name) {
+  console.log('Hello ' + name);
+})('John');
+
+var a = function() {
+  console.log('Hi');
+  return 'Hello';
+}();
+
+// a();
+console.log(a);
+*/
+
+Closures
+-----------------------------------------------
+/*
+// function calc(num1) {
+//   var num2 = 10;
+
+//   return function(num3) {
+//     var sum = num1 + num2 + num3;
+//     console.log(sum);
+//   }
+// }
+
+// var add = calc(5);
+
+// // console.log(add);
+
+// add(15);
+
+
+// function a() {
+//   var arr = [];
+//   for(var i = 0; i < 3; i++) {
+//     arr.push(function() {
+//       console.log(i);
+//     });
+//   }
+//   return arr;
+// }
+
+// var b = a();
+
+// console.log(b);
+
+// b[0]();
+// b[1]();
+// b[2]();
+
+function a() {
+  var arr = [];
+  for(var i = 0; i < 3; i++) {
+    arr.push((function() {
+      console.log(i);
+    })());
+  }
+  return arr;
+}
+
+a();
+*/
+
+call(), apply(), bind()
+-----------------------------------------------
+/*
+var person = {
+  firstname: 'John',
+  lastname: 'Smith',
+  fullname: function() {
+    return this.firstname + ' ' + this.lastname;
+  }
+};
+
+var nick = {
+  firstname: 'Nick',
+  lastname: 'Doe'
+};
+
+console.log(person.fullname.call(nick));
+
+
+var definePerson = function(age, job) {
+  console.log(this.fullname() + ' is ' + age + ' years old and he is a ' + job);
+};
+
+// definePerson(28, 'developer');
+definePerson.call(person, 28, 'developer');
+definePerson.apply(person, [30, 'designer']);
+
+// var getPerson = definePerson.bind(person);
+// getPerson(19, 'student');
+
+// var getPerson = definePerson.bind(person, 19, 'student');
+// getPerson();
+
+var getPerson = definePerson.bind(person, 35);
+getPerson('musician');
+getPerson('driver');
+*/
+
+
+
+
+
+
+
+
+
+
+
+
